@@ -2,7 +2,7 @@
 /*
  * Create a list that holds all of your cards
  */
-const allCards = [
+const Cards = [
   'fa-diamond',
   'fa-diamond',
   'fa-paper-plane-o',
@@ -58,8 +58,18 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+/* Making a clck function on the grid */
+const allCards = document.querySelectorAll('.card');
+
+allCards.forEach(function(card){
+  card.addEventListener('click', function(){
+    card.classList.add('open', 'show');
+  });
+  
+});
+
 /* Setting up a pop up for end of game */
-const isGameOver = true;
+const isGameOver = false;
 
 if (isGameOver == true) {
   function gameFinished(){
