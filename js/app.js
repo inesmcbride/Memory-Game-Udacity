@@ -48,18 +48,32 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+let cardsOpened = [];
 
 // Making a clck function on the grid
 const allCards = document.querySelectorAll('.card');
 
 allCards.forEach(function(card){
-  card.addEventListener('click', function(){
-    card.classList.toggle('open');
-    card.classList.toggle('show');
-    console.log(card)
+  card.addEventListener('click', function() {
+      toggleCard (card);
+      addCardsOpened(card);
+    if (cardsOpened.length === 2) {
+      console.log('2 cards!');
+    };
   });
-  
 });
+
+//Making toggle.class as its own function
+function toggleCard (card){
+  card.classList.toggle('open');
+  card.classList.toggle('show');
+}
+
+//Push opened cards into the array
+function addCardsOpened(card){
+  cardsOpened.push(card);
+  console.log(cardsOpened);
+}
 
 // Setting up a pop up for end of game
 const isGameOver = false;
