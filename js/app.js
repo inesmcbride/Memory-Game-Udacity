@@ -3,24 +3,15 @@
  * Create a list that holds all of your cards
  */
 const Cards = [
-  'fa-diamond',
-  'fa-diamond',
-  'fa-paper-plane-o',
-  'fa-paper-plane-o',
-  'fa-anchor',
-  'fa-anchor',
-  'fa-bolt',
-  'fa-bolt',
-  'fa-cube',
-  'fa-cube',
-  'fa-anchor',
-  'fa-anchor',
-  'fa-leaf',
-  'fa-leaf',
-  'fa-bicycle',
-  'fa-bicycle',
-  'fa-bomb',
-  'fa-bomb',
+  'fa-diamond', 'fa-diamond',
+  'fa-paper-plane-o', 'fa-paper-plane-o',
+  'fa-anchor', 'fa-anchor',
+  'fa-bolt', 'fa-bolt',
+  'fa-cube', 'fa-cube',
+  'fa-anchor', 'fa-anchor',
+  'fa-leaf', 'fa-leaf',
+  'fa-bicycle', 'fa-bicycle',
+  'fa-bomb', 'fa-bomb',
 ];
 
 
@@ -58,7 +49,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-/* Making a clck function on the grid */
+// Making a clck function on the grid
 const allCards = document.querySelectorAll('.card');
 
 allCards.forEach(function(card){
@@ -70,7 +61,7 @@ allCards.forEach(function(card){
   
 });
 
-/* Setting up a pop up for end of game */
+// Setting up a pop up for end of game
 const isGameOver = false;
 
 if (isGameOver == true) {
