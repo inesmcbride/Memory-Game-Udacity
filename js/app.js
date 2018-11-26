@@ -76,7 +76,6 @@ function noMatch(card){
     toggleCard(cardsOpened[1]);
     cardsOpened = [];
   }, 1000);
-  movesConter();
 }
 
 //Give cards class .match
@@ -108,16 +107,20 @@ allCards.forEach(function(card){
       toggleCard(card);
       addCardsOpened(card);
       //Check for match here
-      if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
-        console.log("MATCH!!!");
-        match(card);
-      }
+      if (cardsOpened.length == 2) {
+        if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
+          console.log("MATCH!!!");
+          match(card);
+//          movesConter();
+        }
+      };
       //will this if statement muddle with finding a match? Doesn't seem to thus far
       if (cardsOpened.length > 2) {
         cardLimit(card);
       };
       //If no match, cards go away
       if (cardsOpened.length ===2) {
+        movesConter();
         noMatch(card);
       };
     };
