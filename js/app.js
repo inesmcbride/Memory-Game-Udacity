@@ -91,7 +91,9 @@ allCards.forEach(function(card){
       addCardsOpened(card);
       //Check for match here
       
-      
+      if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
+        console.log("MATCH!!!")
+      }
       //will this if statement muddle with finding a match
       if (cardsOpened.length > 2) {
         cardLimit(card);
