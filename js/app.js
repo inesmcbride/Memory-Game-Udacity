@@ -69,7 +69,10 @@ allCards.forEach(function(card){
     toggleCard(card);
       addCardsOpened(card);
       if (cardsOpened.length > 2) {
+        cardsOpened.pop();
         !toggleCard(card);
+        console.log(cardsOpened.length)
+        //will this if statement muddle with finding a match
       };
     if (cardsOpened.length ===2) {
       //hide the cards
