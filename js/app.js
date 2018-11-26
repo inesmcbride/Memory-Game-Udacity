@@ -1,7 +1,7 @@
 
 /*
- * Create a list that holds all of your cards
- */
+* Create a list that holds all of your cards
+*/
 const Cards = [
   'fa-diamond', 'fa-diamond',
   'fa-paper-plane-o', 'fa-paper-plane-o',
@@ -16,55 +16,41 @@ const Cards = [
 
 
 /*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+* Display the cards on the page
+*   - shuffle the list of cards using the provided "shuffle" method below
+*   - loop through each card and create its HTML
+*   - add each card's HTML to the page
+*/
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  
+  return array;
 }
 
 
 /*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+* set up the event listener for a card. If a card is clicked:
+*  - display the card's symbol (put this functionality in another function that you call from this one)
+*  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+*  - if the list already has another card, check to see if the two cards match
+*    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+*    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+*    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+*    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+*/
 
 let cardsOpened = [];
 const allCards = document.querySelectorAll('.card');
-
-allCards.forEach(function(card){
-  card.addEventListener('click', function() {
-    if (cardsOpened.length >= 2) {
-        //hide the cards
-        } else {
-        toggleCard (card);
-        addCardsOpened(card);
-          if (cardsOpened.length === 2) {
-            console.log('2 cards!');
-          };
-        }
-  });
-});
 
 //Making toggle.class as its own function
 function toggleCard (card){
@@ -77,6 +63,27 @@ function addCardsOpened(card){
   cardsOpened.push(card);
   console.log(cardsOpened);
 }
+
+allCards.forEach(function(card){
+  card.addEventListener('click', function() {
+    toggleCard (card);
+      addCardsOpened(card);
+      if (cardsOpened.length === 2) {
+        console.log('2 cards!');
+      };
+    if (cardsOpened.length ===2) {
+      //hide the cards
+      console.log(cardsOpened.length, ' cards opened')
+      setTimeout(function(){
+        toggleCard(cardsOpened[0]);
+        toggleCard(cardsOpened[1]);
+        cardsOpened = [];
+      }, 1000);
+    };
+  });
+});
+
+
 
 // Setting up a pop up for end of game
 const isGameOver = false;
