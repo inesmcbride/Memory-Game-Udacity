@@ -66,22 +66,24 @@ function addCardsOpened(card){
 
 allCards.forEach(function(card){
   card.addEventListener('click', function() {
-    toggleCard(card);
-      addCardsOpened(card);
-      if (cardsOpened.length > 2) {
-        cardsOpened.pop();
-        !toggleCard(card);
-        console.log(cardsOpened.length)
-        //will this if statement muddle with finding a match
+    if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
+      toggleCard(card);
+        addCardsOpened(card);
+        if (cardsOpened.length > 2) {
+          cardsOpened.pop();
+          !toggleCard(card);
+          console.log(cardsOpened.length)
+          //will this if statement muddle with finding a match
+        };
+      if (cardsOpened.length ===2) {
+        //hide the cards
+        console.log(cardsOpened.length, ' cards opened')
+        setTimeout(function(){
+          toggleCard(cardsOpened[0]);
+          toggleCard(cardsOpened[1]);
+          cardsOpened = [];
+        }, 1000);
       };
-    if (cardsOpened.length ===2) {
-      //hide the cards
-      console.log(cardsOpened.length, ' cards opened')
-      setTimeout(function(){
-        toggleCard(cardsOpened[0]);
-        toggleCard(cardsOpened[1]);
-        cardsOpened = [];
-      }, 1000);
     };
   });
 });
