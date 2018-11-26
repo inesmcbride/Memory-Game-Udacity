@@ -77,6 +77,13 @@ function noMatch(card){
         }, 1000);
 }
 
+//Stop user from electing and storing more than two cards before a match is checked - will this interfare with a card mathcing function?
+function cardLimit(card){
+  cardsOpened.pop();
+        !toggleCard(card);
+        console.log(cardsOpened.length)
+}
+
 allCards.forEach(function(card){
   card.addEventListener('click', function() {
     if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
@@ -87,9 +94,7 @@ allCards.forEach(function(card){
       
       //will this if statement muddle with finding a match
       if (cardsOpened.length > 2) {
-        cardsOpened.pop();
-        !toggleCard(card);
-        console.log(cardsOpened.length)
+        cardLimit(card);
       };
       //If no match, cards go away
       if (cardsOpened.length ===2) {
