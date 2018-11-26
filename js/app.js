@@ -77,6 +77,12 @@ function noMatch(card){
         }, 1000);
 }
 
+//Give cards class .match
+function match(card){
+  cardsOpened[0].classList.add('match');
+  cardsOpened[1].classList.add('match');
+}
+
 //Stop user from electing and storing more than two cards before a match is checked - will this interfare with a card mathcing function?
 function cardLimit(card){
   cardsOpened.pop();
@@ -92,7 +98,8 @@ allCards.forEach(function(card){
       //Check for match here
       
       if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
-        console.log("MATCH!!!")
+        console.log("MATCH!!!");
+        match(card);
       }
       //will this if statement muddle with finding a match
       if (cardsOpened.length > 2) {
