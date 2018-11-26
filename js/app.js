@@ -39,12 +39,15 @@ function shuffle(array) {
 
 
 /*
+DONE:
 * set up the event listener for a card. If a card is clicked:
 *  - display the card's symbol (put this functionality in another function that you call from this one)
 *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+*    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+
+TODO:
 *  - if the list already has another card, check to see if the two cards match
 *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
-*    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
 */
@@ -64,25 +67,33 @@ function addCardsOpened(card){
   console.log(cardsOpened);
 }
 
-allCards.forEach(function(card){
-  card.addEventListener('click', function() {
-    if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
-      toggleCard(card);
-        addCardsOpened(card);
-        if (cardsOpened.length > 2) {
-          cardsOpened.pop();
-          !toggleCard(card);
-          console.log(cardsOpened.length)
-          //will this if statement muddle with finding a match
-        };
-      if (cardsOpened.length ===2) {
-        //hide the cards
-        console.log(cardsOpened.length, ' cards opened')
+//Make cards turn around if no match
+function noMatch(card){
+  console.log(cardsOpened.length, ' cards opened')
         setTimeout(function(){
           toggleCard(cardsOpened[0]);
           toggleCard(cardsOpened[1]);
           cardsOpened = [];
         }, 1000);
+}
+
+allCards.forEach(function(card){
+  card.addEventListener('click', function() {
+    if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
+      toggleCard(card);
+      addCardsOpened(card);
+      //Check for match here
+      
+      
+      //will this if statement muddle with finding a match
+      if (cardsOpened.length > 2) {
+        cardsOpened.pop();
+        !toggleCard(card);
+        console.log(cardsOpened.length)
+      };
+      //If no match, cards go away
+      if (cardsOpened.length ===2) {
+        noMatch(card);
       };
     };
   });
