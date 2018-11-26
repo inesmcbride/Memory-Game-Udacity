@@ -66,10 +66,10 @@ function addCardsOpened(card){
 
 allCards.forEach(function(card){
   card.addEventListener('click', function() {
-    toggleCard (card);
+    toggleCard(card);
       addCardsOpened(card);
-      if (cardsOpened.length === 2) {
-        console.log('2 cards!');
+      if (cardsOpened.length > 2) {
+        !toggleCard(card);
       };
     if (cardsOpened.length ===2) {
       //hide the cards
