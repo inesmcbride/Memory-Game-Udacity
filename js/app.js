@@ -69,18 +69,19 @@ function addCardsOpened(card){
 
 //Make cards turn around if no match
 function noMatch(card){
-  console.log(cardsOpened.length, ' cards opened')
-        setTimeout(function(){
-          toggleCard(cardsOpened[0]);
-          toggleCard(cardsOpened[1]);
-          cardsOpened = [];
-        }, 1000);
+  setTimeout(function(){
+    toggleCard(cardsOpened[0]);
+    toggleCard(cardsOpened[1]);
+    cardsOpened = [];
+  }, 1000);
 }
 
 //Give cards class .match
 function match(card){
-  cardsOpened[0].classList.add('match');
-  cardsOpened[1].classList.add('match');
+  setTimeout (function(){
+    cardsOpened[0].classList.add('match');
+    cardsOpened[1].classList.add('match');
+  }, 1000);
 }
 
 //Stop user from electing and storing more than two cards before a match is checked - will this interfare with a card mathcing function?
