@@ -44,16 +44,18 @@ DONE:
 *  - display the card's symbol (put this functionality in another function that you call from this one)
 *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
 *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
-
-TODO:
 *  - if the list already has another card, check to see if the two cards match
 *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+
+TODO:
 *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
 */
 
 let cardsOpened = [];
 const allCards = document.querySelectorAll('.card');
+const star = document.querySelector('stars');
+let movesCount = 0;
 
 //Making toggle.class as its own function
 function toggleCard (card){
@@ -74,6 +76,7 @@ function noMatch(card){
     toggleCard(cardsOpened[1]);
     cardsOpened = [];
   }, 1000);
+  movesConter();
 }
 
 //Give cards class .match
@@ -84,12 +87,20 @@ function match(card){
   }, 1000);
 }
 
-//Stop user from electing and storing more than two cards before a match is checked - will this interfare with a card mathcing function?
+//Stop user from electing and storing more than two cards before a match is checked - will this interfare with a card mathcing function? Doesn't seem to thus far
 function cardLimit(card){
   cardsOpened.pop();
         !toggleCard(card);
         console.log(cardsOpened.length)
 }
+
+//Increment move counter
+function movesConter(){
+  movesCount ++;
+  const movesNumber = document.querySelector('.moves');
+  movesNumber.innerHTML = movesCount;
+}
+
 
 allCards.forEach(function(card){
   card.addEventListener('click', function() {
@@ -97,12 +108,11 @@ allCards.forEach(function(card){
       toggleCard(card);
       addCardsOpened(card);
       //Check for match here
-      
       if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
         console.log("MATCH!!!");
         match(card);
       }
-      //will this if statement muddle with finding a match
+      //will this if statement muddle with finding a match? Doesn't seem to thus far
       if (cardsOpened.length > 2) {
         cardLimit(card);
       };
