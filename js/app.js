@@ -107,12 +107,11 @@ function movesConter(){
 
 //Stars
 function starCount(){
-  if (movesCount <= 3){
+  if (movesCount == 3){
     starCounter ++;
-    const sC = document.querySelector('.starCounter')
-    console.log('StarCount');
-    cardsOpened = [];
-    sC.innerHTML = starCounter;
+    const starPanel = document.querySelector('.stars li i')
+    console.log(starPanel);
+    starPanel.classList.add('hide');
   }
 }
 
