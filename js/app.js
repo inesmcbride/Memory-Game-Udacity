@@ -46,9 +46,9 @@ DONE:
 *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 *  - if the list already has another card, check to see if the two cards match
 *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+*    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 
 TODO:
-*    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
 */
 
@@ -56,6 +56,8 @@ let cardsOpened = [];
 const allCards = document.querySelectorAll('.card');
 const star = document.querySelector('stars');
 let movesCount = 0;
+let starCounter = 0;
+let scorePanel = document.querySelectorAll('score-panel');
 
 //Making toggle.class as its own function
 function toggleCard (card){
@@ -75,6 +77,7 @@ function noMatch(card){
     toggleCard(cardsOpened[0]);
     toggleCard(cardsOpened[1]);
     cardsOpened = [];
+    starCount();
   }, 1000);
 }
 
@@ -83,6 +86,8 @@ function match(card){
   setTimeout (function(){
     cardsOpened[0].classList.add('match');
     cardsOpened[1].classList.add('match');
+    starCount();
+    cardsOpened = [];
   }, 1000);
 }
 
@@ -100,6 +105,16 @@ function movesConter(){
   movesNumber.innerHTML = movesCount;
 }
 
+//Stars
+function starCount(){
+  if (movesCount <= 3){
+    starCounter ++;
+    const sC = document.querySelector('.starCounter')
+    console.log('StarCount');
+    cardsOpened = [];
+    sC.innerHTML = starCounter;
+  }
+}
 
 allCards.forEach(function(card){
   card.addEventListener('click', function() {
@@ -108,21 +123,28 @@ allCards.forEach(function(card){
       addCardsOpened(card);
       //Check for match here
       if (cardsOpened.length == 2) {
-        if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
-          console.log("MATCH!!!");
-          match(card);
-//          movesConter();
+         if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
+           console.log("MATCH!!!");
+           match(card);
+           movesConter();
+           console.log(cardsOpened.length);
+        } else {
+          movesConter();
+          noMatch(card);
         }
       };
-      //will this if statement muddle with finding a match? Doesn't seem to thus far
       if (cardsOpened.length > 2) {
         cardLimit(card);
       };
+      //will this if statement muddle with finding a match? Doesn't seem to thus far
+//      if (cardsOpened.length > 2) {
+//        cardLimit(card);
+//      };
       //If no match, cards go away
-      if (cardsOpened.length ===2) {
-        movesConter();
-        noMatch(card);
-      };
+//      if (cardsOpened.length ===2) {
+//        movesConter();
+//        noMatch(card);
+//      };
     };
   });
 });
