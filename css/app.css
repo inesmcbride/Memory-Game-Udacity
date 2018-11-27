@@ -99,7 +99,7 @@ h1 {
 }
 
 .hide{
-  display: none;
+  display: none !important;
 }
 
 .score-panel .stars li {

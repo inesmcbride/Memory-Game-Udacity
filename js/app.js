@@ -107,12 +107,14 @@ function movesConter(){
 
 //Stars
 function starCount(){
-  if (movesCount == 3){
+  const starPanel = document.querySelector('.stars').children;
+  if (movesCount === 1){
     starCounter ++;
-    const starPanel = document.querySelector('.stars li i')
-    console.log(starPanel);
-    starPanel.classList.add('hide');
-  }
+    starPanel[0].classList.add('hide');
+  } else if (movesCount === 2){
+    starCounter ++;
+    starPanel[1].classList.add('hide');
+  } 
 }
 
 allCards.forEach(function(card){
