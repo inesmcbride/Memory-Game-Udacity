@@ -102,6 +102,10 @@ h1 {
   display: none !important;
 }
 
+.showPanel{
+  display: block !important;
+}
+
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
@@ -110,4 +114,68 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+/* Styles for the winner popup */
+
+.winner-background{
+  background-color: rgba(128, 128, 128, 0.5);
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: none;
+}
+
+.winner-popup{
+  margin: auto;
+  width: 400px;
+  background: white;
+  padding: 30px 50px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  transform: translate(0%, 80%);
+}
+
+.winner-popup .heading-section{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #553f66;
+}
+
+.winner-popup .close{
+  color: #553f66;
+  font-weight: bold;
+}
+
+.winner-popup .stats-section{
+  padding-left: 8%;
+}
+
+.winner-popup .buttons {
+  display: flex;
+  padding-top: 20px;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.button{
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #aa7ecd;
+}
+
+.winner-popup .buttons .replay{
+/*  float: right;*/
+/*  margin-left: 15%;*/
+}
+.winner-popup .buttons .cancel{
+/*  float: left;*/
+/*  margin-right: 15%;*/
+  
 }

@@ -59,6 +59,7 @@ let movesCount = 0;
 let starCounter = 0;
 let scorePanel = document.querySelectorAll('score-panel');
 let matchCounter = 0;
+let winnerPannel = document.querySelector('.winner-background');
 
 //Making toggle.class as its own function
 function toggleCard (card){
@@ -89,10 +90,16 @@ function match(card){
     cardsOpened[1].classList.add('match');
     starCount();
     cardsOpened = [];
-    matchCounter ++;
-    console.log('MatchCount' + matchCounter);
-  }, 700);
+//    matchCounter ++;
+//    console.log(matchCounter);
+//    if (matchCounter === 2){
+//    console.log('8 matches');
+//    gameFinished();
+//  }
+  }, 200);
+  
 }
+
 
 //Stop user from electing and storing more than two cards before a match is checked - will this interfare with a card mathcing function? Doesn't seem to thus far
 function cardLimit(card){
@@ -117,14 +124,20 @@ function starCount(){
   } else if (movesCount === 2){
     starCounter ++;
     starPanel[1].classList.add('hide');
-  } 
+  }
 }
 
-//Count of matches
-//function matchCount(){
-//    matchCounter ++;
-//    console.log(matchCounter);
-//  }
+function winner(){
+  matchCounter ++;
+  console.log(matchCounter);
+  if (matchCounter === 2){
+    setTimeout(function(){
+      gameFinished();
+    }, 1000);
+  }
+}
+
+//Winner popup
   
 
 allCards.forEach(function(card){
@@ -138,6 +151,7 @@ allCards.forEach(function(card){
            console.log("MATCH!!!");
            match(card);
            movesConter();
+           winner();
 //           console.log(cardsOpened.length);
         } else {
           movesConter();
@@ -161,13 +175,28 @@ allCards.forEach(function(card){
 });
 
 
+//Set cancel button to hide winner popup
+function cancelButton(){
+  const closeButton = document.querySelector('.cancel');
+  const exitButton = document.querySelector('.close');
+  closeButton.addEventListener('click', function(){
+    winnerPannel.classList.toggle('showPanel');
+  });
+  exitButton.addEventListener('click', function(){
+    winnerPannel.classList.toggle('showPanel');
+  });
+}
 
 // Setting up a pop up for end of game
-const isGameOver = false;
-
-if (isGameOver == true) {
-  function gameFinished(){
-    alert("Congratulations! You have won the game");
+function gameFinished(){
+  const totalMoves = document.querySelector('.total-moves');
+  totalMoves.innerHTML = movesCount;
+  cancelButton();
+  
+  winnerPannel.classList.toggle('showPanel');
+  
+  
   };
-  gameFinished();
-};
+
+
+
