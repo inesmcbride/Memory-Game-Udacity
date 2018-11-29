@@ -58,6 +58,7 @@ const star = document.querySelector('stars');
 let movesCount = 0;
 let starCounter = 0;
 let scorePanel = document.querySelectorAll('score-panel');
+let matchCounter = 0;
 
 //Making toggle.class as its own function
 function toggleCard (card){
@@ -78,7 +79,7 @@ function noMatch(card){
     toggleCard(cardsOpened[1]);
     cardsOpened = [];
     starCount();
-  }, 1000);
+  }, 700);
 }
 
 //Give cards class .match
@@ -88,7 +89,9 @@ function match(card){
     cardsOpened[1].classList.add('match');
     starCount();
     cardsOpened = [];
-  }, 1000);
+    matchCounter ++;
+    console.log('MatchCount' + matchCounter);
+  }, 700);
 }
 
 //Stop user from electing and storing more than two cards before a match is checked - will this interfare with a card mathcing function? Doesn't seem to thus far
@@ -117,6 +120,13 @@ function starCount(){
   } 
 }
 
+//Count of matches
+//function matchCount(){
+//    matchCounter ++;
+//    console.log(matchCounter);
+//  }
+  
+
 allCards.forEach(function(card){
   card.addEventListener('click', function() {
     if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
@@ -128,7 +138,7 @@ allCards.forEach(function(card){
            console.log("MATCH!!!");
            match(card);
            movesConter();
-           console.log(cardsOpened.length);
+//           console.log(cardsOpened.length);
         } else {
           movesConter();
           noMatch(card);
