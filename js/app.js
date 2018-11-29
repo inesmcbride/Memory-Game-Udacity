@@ -47,9 +47,11 @@ DONE:
 *  - if the list already has another card, check to see if the two cards match
 *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
 *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+*    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
 
 TODO:
-*    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+*    + Populate final display a message with the stars and final time
+*    + Add timer
 */
 
 let cardsOpened = [];
@@ -127,9 +129,29 @@ function starCount(){
   }
 }
 
+//Set cancel button to hide winner popup
+function cancelButton(){
+  const closeButton = document.querySelector('.cancel');
+  const exitButton = document.querySelector('.close');
+  closeButton.addEventListener('click', function(){
+    winnerPannel.classList.toggle('showPanel');
+  });
+  exitButton.addEventListener('click', function(){
+    winnerPannel.classList.toggle('showPanel');
+  });
+}
+
+// Populating winner panel
+function gameFinished(){
+  const totalMoves = document.querySelector('.total-moves');
+  totalMoves.innerHTML = movesCount;
+  cancelButton();
+  winnerPannel.classList.toggle('showPanel');
+}
+
+// Pop up when all matches are made
 function winner(){
   matchCounter ++;
-  console.log(matchCounter);
   if (matchCounter === 2){
     setTimeout(function(){
       gameFinished();
@@ -173,30 +195,6 @@ allCards.forEach(function(card){
     };
   });
 });
-
-
-//Set cancel button to hide winner popup
-function cancelButton(){
-  const closeButton = document.querySelector('.cancel');
-  const exitButton = document.querySelector('.close');
-  closeButton.addEventListener('click', function(){
-    winnerPannel.classList.toggle('showPanel');
-  });
-  exitButton.addEventListener('click', function(){
-    winnerPannel.classList.toggle('showPanel');
-  });
-}
-
-// Setting up a pop up for end of game
-function gameFinished(){
-  const totalMoves = document.querySelector('.total-moves');
-  totalMoves.innerHTML = movesCount;
-  cancelButton();
-  
-  winnerPannel.classList.toggle('showPanel');
-  
-  
-  };
 
 
 

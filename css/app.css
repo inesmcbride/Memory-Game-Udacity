@@ -143,11 +143,11 @@ h1 {
   text-align: center;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid #553f66;
+  border-bottom: 2px solid #664b7b;
 }
 
 .winner-popup .close{
-  color: #553f66;
+  color: #664b7b;
   font-weight: bold;
 }
 
