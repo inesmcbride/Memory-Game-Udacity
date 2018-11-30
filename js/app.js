@@ -66,6 +66,8 @@ let scorePanel = document.querySelectorAll('score-panel');
 let matchCounter = 0;
 let winnerPannel = document.querySelector('.winner-background');
 const deck = document.querySelector('.deck');
+let clockOff = true;
+let time = 0;
 
 //function initGame(){
 //  const deck = document.querySelector('.deck');
@@ -185,11 +187,39 @@ function winner(){
   }
 }
 
-//Winner popup
+//Clock timer
+function startClock(){
+  let clockID = setInterval(() => {
+    time ++;
+    console.log(time);
+    displayClock();
+  }, 1000);
+}
+
+//Disply clock
+function displayClock(){
+  const clock = document.querySelector('.clock');
+  let minutes = Math.floor(time / 60);
+  let seconds = time % 60; 
+  clock.innerHTML = time;
+  if (seconds <= 10){
+    clock.innerHTML = minutes + ':0' + seconds;
+  } else {
+    clock.innerHTML = minutes + ':' + seconds;
+  };
+}
+
+
+
+
   
 
 allCards.forEach(function(card){
   card.addEventListener('click', function() {
+    if (clockOff){
+      startClock();
+      clockOff = false;
+    }
     if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')){
       toggleCard(card);
       addCardsOpened(card);
