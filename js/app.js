@@ -68,6 +68,7 @@ let winnerPannel = document.querySelector('.winner-background');
 const deck = document.querySelector('.deck');
 let clockOff = true;
 let time = 0;
+let clockID;
 
 //function initGame(){
 //  const deck = document.querySelector('.deck');
@@ -181,6 +182,7 @@ function gameFinished(){
 function winner(){
   matchCounter ++;
   if (matchCounter === 2){
+    stopClock();
     setTimeout(function(){
       gameFinished();
     }, 1000);
@@ -189,7 +191,7 @@ function winner(){
 
 //Clock timer
 function startClock(){
-  let clockID = setInterval(() => {
+  clockID = setInterval(() => {
     time ++;
     console.log(time);
     displayClock();
@@ -207,6 +209,11 @@ function displayClock(){
   } else {
     clock.innerHTML = minutes + ':' + seconds;
   };
+}
+
+//Stop clock
+function stopClock(){
+  clearInterval(clockID);
 }
 
 
