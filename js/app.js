@@ -2,18 +2,21 @@
 /*
 * Create a list that holds all of your cards
 */
-const Cards = [
-  'fa-diamond', 'fa-diamond',
-  'fa-paper-plane-o', 'fa-paper-plane-o',
-  'fa-anchor', 'fa-anchor',
-  'fa-bolt', 'fa-bolt',
-  'fa-cube', 'fa-cube',
-  'fa-anchor', 'fa-anchor',
-  'fa-leaf', 'fa-leaf',
-  'fa-bicycle', 'fa-bicycle',
-  'fa-bomb', 'fa-bomb',
-];
+let start;
 
+let Cards = ['fa-diamond', 'fa-diamond',
+             'fa-paper-plane-o', 'fa-paper-plane-o',
+             'fa-bolt', 'fa-bolt',
+             'fa-cube', 'fa-cube',
+             'fa-anchor', 'fa-anchor',
+             'fa-leaf', 'fa-leaf',
+             'fa-bicycle', 'fa-bicycle',
+             'fa-bomb', 'fa-bomb',
+            ];
+
+//function randomiseCards(card){
+//  return '<li class="card"><i class="fa ${Cards}"></i></li>';
+//}
 
 /*
 * Display the cards on the page
@@ -62,6 +65,29 @@ let starCounter = 0;
 let scorePanel = document.querySelectorAll('score-panel');
 let matchCounter = 0;
 let winnerPannel = document.querySelector('.winner-background');
+const deck = document.querySelector('.deck');
+
+//function initGame(){
+//  const deck = document.querySelector('.deck');
+//  const cardsHTML = shuffle(Cards).map(function(card) {
+//    return randomiseCards(card);
+//  })
+//  console.log(cardsHTML);
+//  deck.innerHTML = cardsHTML.join('');
+//}
+//
+//initGame();
+
+function shuffleCards(){
+  const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+  console.log('C2S', cardsToShuffle);
+  const shuffledCards = shuffle(cardsToShuffle);
+  for (card of shuffledCards){
+    deck.appendChild(card);
+  }
+}
+
+shuffleCards();
 
 //Making toggle.class as its own function
 function toggleCard (card){
