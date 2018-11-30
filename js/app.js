@@ -69,6 +69,7 @@ const deck = document.querySelector('.deck');
 let clockOff = true;
 let time = 0;
 let clockID;
+let stars = 3;
 
 //function initGame(){
 //  const deck = document.querySelector('.deck');
@@ -152,9 +153,11 @@ function starCount(){
   if (movesCount === 1){
     starCounter ++;
     starPanel[0].classList.add('hide');
+    stars = 2;
   } else if (movesCount === 2){
     starCounter ++;
     starPanel[1].classList.add('hide');
+    stars = 1;
   }
 }
 
@@ -173,7 +176,13 @@ function cancelButton(){
 // Populating winner panel
 function gameFinished(){
   const totalMoves = document.querySelector('.total-moves');
+  const totalTime = document.querySelector('.total-time');
+  const clockTime = document.querySelector('.clock').innerHTML;
+  const totalStars = document.querySelector('.total-stars');
+  const totalStarsDisplay = document.querySelector('.stars').innerHTML;
   totalMoves.innerHTML = movesCount;
+  totalTime.innerHTML = clockTime;
+  totalStars.innerHTML = stars;
   cancelButton();
   winnerPannel.classList.toggle('showPanel');
 }
