@@ -239,6 +239,7 @@ function stopClock(){
 function reset(){
   resetTime();
   resetStars();
+  resetMoves();
 }
 
 function resetTime(){
@@ -254,18 +255,11 @@ function resetStars(){
   starPanel[1].classList.toggle('hide');
 }
 
-//function starCount(){
-//  const starPanel = document.querySelector('.stars').children;
-//  if (movesCount === 1){
-//    starCounter ++;
-//    starPanel[0].classList.add('hide');
-//    stars = 2;
-//  } else if (movesCount === 2){
-//    starCounter ++;
-//    starPanel[1].classList.add('hide');
-//    stars = 1;
-//  }
-//}
+function resetMoves(){
+  movesCount = 0;
+  const movesNumber = document.querySelector('.moves');
+  movesNumber.innerHTML = movesCount;
+}
 
 
 
