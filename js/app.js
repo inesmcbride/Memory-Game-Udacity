@@ -122,14 +122,7 @@ function match(card){
     cardsOpened[1].classList.add('match');
     starCount();
     cardsOpened = [];
-//    matchCounter ++;
-//    console.log(matchCounter);
-//    if (matchCounter === 2){
-//    console.log('8 matches');
-//    gameFinished();
-//  }
   }, 200);
-  
 }
 
 
@@ -173,13 +166,21 @@ function cancelButton(){
   });
 }
 
-//set the replay button to reset
+//set the replay button in winner panel to reset
 function replayButton(){
   const replayButt = document.querySelector('.replay');
   replayButt.addEventListener('click', function(){
     winnerPannel.classList.toggle('showPanel');
     reset();
-  })
+  });
+}
+
+//set the replay button on game to reset
+function restartButton(){
+  const restartButton = document.querySelector('.restart');
+  restartButton.addEventListener('click', function(){
+    reset();
+  });
 }
 
 // Populating winner panel
@@ -200,7 +201,7 @@ function gameFinished(){
 // Pop up when all matches are made
 function winner(){
   matchCounter ++;
-  if (matchCounter === 2){
+  if (matchCounter === 8){
     stopClock();
     setTimeout(function(){
       gameFinished();
@@ -240,6 +241,9 @@ function reset(){
   resetTime();
   resetStars();
   resetMoves();
+  resetCards();
+  shuffleCards();
+  
 }
 
 function resetTime(){
@@ -261,9 +265,16 @@ function resetMoves(){
   movesNumber.innerHTML = movesCount;
 }
 
+function resetCards(){
+  let matchedCards = document.querySelectorAll('deck').children;
+  if (matchedCards.classList.contains('match')){
+    matchedCards.classList.remove('match');
+    matchedCards.classList.remove('open');
+    matchedCards.classList.remove('show');
+      };
+}
 
-
-  
+restartButton();
 
 allCards.forEach(function(card){
   card.addEventListener('click', function() {
