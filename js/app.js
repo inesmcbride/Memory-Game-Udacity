@@ -70,6 +70,7 @@ let clockOff = true;
 let time = 0;
 let clockID;
 let stars = 3;
+const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
 
 //function initGame(){
 //  const deck = document.querySelector('.deck');
@@ -83,7 +84,6 @@ let stars = 3;
 //initGame();
 
 function shuffleCards(){
-  const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
   console.log('C2S', cardsToShuffle);
   const shuffledCards = shuffle(cardsToShuffle);
   for (card of shuffledCards){
@@ -247,7 +247,7 @@ function reset(){
   resetStars();
   resetMoves();
   resetCards();
-//  shuffleCards();
+  shuffleCards();
 }
 
 function resetTime(){
@@ -269,11 +269,31 @@ function resetMoves(){
   movesNumber.innerHTML = movesCount;
 }
 
+//function resetCards(){
+//  let deckz = document.querySelector('.deck');
+//  deckz.innerHTML();
+////?????????????????????????????????????????????????????????
+//}
 function resetCards(){
-  let deckz = document.querySelector('.deck');
-  deckz.innerHTML();
-//?????????????????????????????????????????????????????????
+  let matchedCards = document.querySelectorAll('deck').children;
+  let matchedC = Array.from(document.querySelectorAll('.deck li'));
+  console.log(matchedCards, 'matchedCards');
+  console.log(matchedC, 'matchedC');
+  console.log(cardsToShuffle, 'try this');
+  console.log(deck.innerHTML, 'another');
+  console.log('C2S', cardsToShuffle);
+  for (card of cardsToShuffle){
+      card.classList.remove('match', 'open', 'show', 'animated', 'tada');
+  }
 }
+
+//function shuffleCards(){
+//  console.log('C2S', cardsToShuffle);
+//  const shuffledCards = shuffle(cardsToShuffle);
+//  for (card of shuffledCards){
+//    deck.appendChild(card);
+//  }
+//}
 
 
 restartButton();
