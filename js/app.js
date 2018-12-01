@@ -106,23 +106,28 @@ function addCardsOpened(card){
 }
 
 //Make cards turn around if no match
-function noMatch(card){
+function noMatch(card){ 
+  
   setTimeout(function(){
     toggleCard(cardsOpened[0]);
     toggleCard(cardsOpened[1]);
+    cardsOpened[0].classList.toggle('wrong');
+    cardsOpened[1].classList.toggle('wrong');
+    cardsOpened[0].classList.remove('animated', 'shake');
+    cardsOpened[1].classList.remove('animated', 'shake');
     cardsOpened = [];
     starCount();
-  }, 700);
+  }, 500);
 }
 
 //Give cards class .match
 function match(card){
   setTimeout (function(){
-    cardsOpened[0].classList.add('match');
-    cardsOpened[1].classList.add('match');
+    cardsOpened[0].classList.toggle('match');
+    cardsOpened[1].classList.toggle('match');
     starCount();
     cardsOpened = [];
-  }, 200);
+  }, 800);
 }
 
 
@@ -242,8 +247,7 @@ function reset(){
   resetStars();
   resetMoves();
   resetCards();
-  shuffleCards();
-  
+//  shuffleCards();
 }
 
 function resetTime(){
@@ -266,13 +270,11 @@ function resetMoves(){
 }
 
 function resetCards(){
-  let matchedCards = document.querySelectorAll('deck').children;
-  if (matchedCards.classList.contains('match')){
-    matchedCards.classList.remove('match');
-    matchedCards.classList.remove('open');
-    matchedCards.classList.remove('show');
-      };
+  let deckz = document.querySelector('.deck');
+  deckz.innerHTML();
+//?????????????????????????????????????????????????????????
 }
+
 
 restartButton();
 
@@ -289,13 +291,21 @@ allCards.forEach(function(card){
       if (cardsOpened.length == 2) {
          if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
            console.log("MATCH!!!");
+           cardsOpened[0].classList.add('animated', 'tada');
+           cardsOpened[1].classList.add('animated', 'tada');
            match(card);
            movesConter();
            winner();
 //           console.log(cardsOpened.length);
         } else {
+          setTimeout(function(){
           movesConter();
+          cardsOpened[0].classList.add('animated', 'shake');
+          cardsOpened[1].classList.add('animated', 'shake');
+          cardsOpened[0].classList.toggle('wrong');
+          cardsOpened[1].classList.toggle('wrong');
           noMatch(card);
+            }, 400);
         }
       };
       if (cardsOpened.length > 2) {
