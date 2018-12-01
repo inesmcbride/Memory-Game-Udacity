@@ -19,7 +19,7 @@ let Cards = ['fa-diamond', 'fa-diamond',
 //}
 
 /*
-* Display the cards on the page
+* Display the cards on the page DONE:
 *   - shuffle the list of cards using the provided "shuffle" method below
 *   - loop through each card and create its HTML
 *   - add each card's HTML to the page
@@ -51,10 +51,11 @@ DONE:
 *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
 *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
-
-TODO:
 *    + Populate final display a message with the stars and final time
 *    + Add timer
+
+TODO:
+*   + Adujust timings of match, no match, star rating.....
 */
 
 let cardsOpened = [];
@@ -269,32 +270,11 @@ function resetMoves(){
   movesNumber.innerHTML = movesCount;
 }
 
-//function resetCards(){
-//  let deckz = document.querySelector('.deck');
-//  deckz.innerHTML();
-////?????????????????????????????????????????????????????????
-//}
 function resetCards(){
-  let matchedCards = document.querySelectorAll('deck').children;
-  let matchedC = Array.from(document.querySelectorAll('.deck li'));
-  console.log(matchedCards, 'matchedCards');
-  console.log(matchedC, 'matchedC');
-  console.log(cardsToShuffle, 'try this');
-  console.log(deck.innerHTML, 'another');
-  console.log('C2S', cardsToShuffle);
   for (card of cardsToShuffle){
-      card.classList.remove('match', 'open', 'show', 'animated', 'tada');
+    card.classList.remove('match', 'open', 'show', 'animated', 'tada');
   }
 }
-
-//function shuffleCards(){
-//  console.log('C2S', cardsToShuffle);
-//  const shuffledCards = shuffle(cardsToShuffle);
-//  for (card of shuffledCards){
-//    deck.appendChild(card);
-//  }
-//}
-
 
 restartButton();
 
