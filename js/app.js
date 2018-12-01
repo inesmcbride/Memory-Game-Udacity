@@ -173,6 +173,15 @@ function cancelButton(){
   });
 }
 
+//set the replay button to reset
+function replayButton(){
+  const replayButt = document.querySelector('.replay');
+  replayButt.addEventListener('click', function(){
+    winnerPannel.classList.toggle('showPanel');
+    reset();
+  })
+}
+
 // Populating winner panel
 function gameFinished(){
   const totalMoves = document.querySelector('.total-moves');
@@ -184,6 +193,7 @@ function gameFinished(){
   totalTime.innerHTML = clockTime;
   totalStars.innerHTML = stars;
   cancelButton();
+  replayButton();
   winnerPannel.classList.toggle('showPanel');
 }
 
@@ -225,6 +235,37 @@ function stopClock(){
   clearInterval(clockID);
 }
 
+//Reset the game
+function reset(){
+  resetTime();
+  resetStars();
+}
+
+function resetTime(){
+  stopClock();
+  clockOff = true;
+  time = 0;
+  displayClock();
+}
+
+function resetStars(){
+  const starPanel = document.querySelector('.stars').children;
+  starPanel[0].classList.toggle('hide');
+  starPanel[1].classList.toggle('hide');
+}
+
+//function starCount(){
+//  const starPanel = document.querySelector('.stars').children;
+//  if (movesCount === 1){
+//    starCounter ++;
+//    starPanel[0].classList.add('hide');
+//    stars = 2;
+//  } else if (movesCount === 2){
+//    starCounter ++;
+//    starPanel[1].classList.add('hide');
+//    stars = 1;
+//  }
+//}
 
 
 

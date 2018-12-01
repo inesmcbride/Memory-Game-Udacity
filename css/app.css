@@ -98,11 +98,15 @@ h1 {
     margin: 0 5px 0 0;
 }
 
-.hide{
+.hide {
   display: none !important;
 }
 
-.showPanel{
+.show {
+  display: inline-block;
+}
+
+.showPanel {
   display: block !important;
 }
 
@@ -121,7 +125,7 @@ span {
 }
 /* Styles for the winner popup */
 
-.winner-background{
+.winner-background {
   background-color: rgba(128, 128, 128, 0.5);
   width: 100vw;
   height: 100%;
@@ -131,7 +135,7 @@ span {
   display: none;
 }
 
-.winner-popup{
+.winner-popup {
   margin: auto;
   width: 400px;
   background: white;
@@ -141,7 +145,7 @@ span {
   transform: translate(0%, 80%);
 }
 
-.winner-popup .heading-section{
+.winner-popup .heading-section {
   display: flex;
   text-align: center;
   align-items: center;
@@ -149,12 +153,12 @@ span {
   border-bottom: 2px solid #664b7b;
 }
 
-.winner-popup .close{
+.winner-popup .close {
   color: #664b7b;
   font-weight: bold;
 }
 
-.winner-popup .stats-section{
+.winner-popup .stats-section {
   padding-left: 8%;
 }
 
@@ -165,20 +169,10 @@ span {
   justify-content: space-between;
 }
 
-.button{
+.button {
   color: white;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
   background-color: #aa7ecd;
-}
-
-.winner-popup .buttons .replay{
-/*  float: right;*/
-/*  margin-left: 15%;*/
-}
-.winner-popup .buttons .cancel{
-/*  float: left;*/
-/*  margin-right: 15%;*/
-  
 }
