@@ -13,10 +13,6 @@ let Cards = ['fa-diamond', 'fa-diamond',
              'fa-bomb', 'fa-bomb',
             ];
 
-//function randomiseCards(card){
-//  return '<li class="card"><i class="fa ${Cards}"></i></li>';
-//}
-
 /*
 * Display the cards on the page DONE:
 *   - shuffle the list of cards using the provided "shuffle" method below
@@ -53,6 +49,9 @@ DONE:
 *    + Populate final display a message with the stars and final time
 *    + Add timer
 
+Useful sites that helped my to begin and when I was at a loss at what to do next:
+*   https://www.youtube.com/watch?v=_rUH-sEs68Y - Mike Wales
+*   https://matthewcranford.com/memory-game-walkthrough-part-1-setup/ - Matthew Cranford
 */
 
 let cardsOpened = [];
