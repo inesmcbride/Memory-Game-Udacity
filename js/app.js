@@ -55,8 +55,6 @@ DONE:
 *    + Add timer
 
 TODO:
-*   + Adujust timings of match, no match, star rating.....
-*/
 
 let cardsOpened = [];
 const allCards = document.querySelectorAll('.card');
@@ -73,16 +71,6 @@ let clockID;
 let stars = 3;
 const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
 
-//function initGame(){
-//  const deck = document.querySelector('.deck');
-//  const cardsHTML = shuffle(Cards).map(function(card) {
-//    return randomiseCards(card);
-//  })
-//  console.log(cardsHTML);
-//  deck.innerHTML = cardsHTML.join('');
-//}
-//
-//initGame();
 
 function shuffleCards(){
   console.log('C2S', cardsToShuffle);
@@ -96,8 +84,13 @@ shuffleCards();
 
 //Making toggle.class as its own function
 function toggleCard (card){
+  card.classList.add('animated', 'fast', 'flipInY');
   card.classList.toggle('open');
   card.classList.toggle('show');
+  setTimeout(function(){
+    card.classList.remove('animated', 'fast', 'flipInY');
+  }, 300);
+  
 }
 
 //Push opened cards into the array
@@ -108,7 +101,6 @@ function addCardsOpened(card){
 
 //Make cards turn around if no match
 function noMatch(card){ 
-  
   setTimeout(function(){
     toggleCard(cardsOpened[0]);
     toggleCard(cardsOpened[1]);
@@ -118,7 +110,7 @@ function noMatch(card){
     cardsOpened[1].classList.remove('animated', 'shake');
     cardsOpened = [];
     starCount();
-  }, 500);
+  }, 800);
 }
 
 //Give cards class .match
@@ -126,17 +118,25 @@ function match(card){
   setTimeout (function(){
     cardsOpened[0].classList.toggle('match');
     cardsOpened[1].classList.toggle('match');
+    cardsOpened[0].classList.add('animated', 'tada');
+    cardsOpened[1].classList.add('animated', 'tada');  
     starCount();
     cardsOpened = [];
   }, 800);
 }
 
+function flip(card){
+  cardsOpened[0].classList.add('animated', 'tada');
+  cardsOpened[1].classList.add('animated', 'tada');
+}
 
-//Stop user from electing and storing more than two cards before a match is checked - will this interfare with a card mathcing function? Doesn't seem to thus far
+
+//Stop user from electing and storing more than two cards before a match is checked
 function cardLimit(card){
   cardsOpened.pop();
-        !toggleCard(card);
-        console.log(cardsOpened.length)
+  !toggleCard(card);
+  card.classList.remove('animated', 'fast', 'flipInY');
+  console.log(cardsOpened.length)
 }
 
 //Increment move counter
@@ -149,11 +149,11 @@ function movesConter(){
 //Stars
 function starCount(){
   const starPanel = document.querySelector('.stars').children;
-  if (movesCount === 1){
+  if (movesCount === 10){
     starCounter ++;
     starPanel[0].classList.add('hide');
     stars = 2;
-  } else if (movesCount === 2){
+  } else if (movesCount === 14){
     starCounter ++;
     starPanel[1].classList.add('hide');
     stars = 1;
@@ -211,13 +211,13 @@ function winner(){
     stopClock();
     setTimeout(function(){
       gameFinished();
-    }, 1000);
+    }, 2500);
   }
 }
 
 //Clock timer
 function startClock(){
-  clockID = setInterval(() => {
+  clockID = setInterval(function() {
     time ++;
     console.log(time);
     displayClock();
@@ -291,8 +291,7 @@ allCards.forEach(function(card){
       if (cardsOpened.length == 2) {
          if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
            console.log("MATCH!!!");
-           cardsOpened[0].classList.add('animated', 'tada');
-           cardsOpened[1].classList.add('animated', 'tada');
+           
            match(card);
            movesConter();
            winner();

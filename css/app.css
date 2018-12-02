@@ -93,18 +93,11 @@ h1 {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
-    animation:  bounceIn; 
-/*    transition: transform 0.8s;*/
-/*    transform-style: preserve-3d;*/
-/*    transform: rotateY(360deg);*/
-/*  animation: bounceIn 2s !important;*/
+/*    animation:  bounceIn;*/
 }
 
-.wrong{
+.wrong {
   background: #c41b00 !important;
-/*  transition: transform 0.3s !important;*/
-/*  transform: skew(10deg, -10deg) scale(1.01)!important;*/
-/*  transform: rotate(20deg) !important;*/
 }
 
 /*
