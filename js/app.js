@@ -1,4 +1,3 @@
-
 /*
 * Create a list that holds all of your cards
 */
@@ -302,15 +301,6 @@ allCards.forEach(function(card){
       if (cardsOpened.length > 2) {
         cardLimit(card);
       };
-      //will this if statement muddle with finding a match? Doesn't seem to thus far
-//      if (cardsOpened.length > 2) {
-//        cardLimit(card);
-//      };
-      //If no match, cards go away
-//      if (cardsOpened.length ===2) {
-//        movesConter();
-//        noMatch(card);
-//      };
     };
   });
 });
