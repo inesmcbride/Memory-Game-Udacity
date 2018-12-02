@@ -2,7 +2,6 @@
 /*
 * Create a list that holds all of your cards
 */
-let start;
 
 let Cards = ['fa-diamond', 'fa-diamond',
              'fa-paper-plane-o', 'fa-paper-plane-o',
@@ -54,7 +53,7 @@ DONE:
 *    + Populate final display a message with the stars and final time
 *    + Add timer
 
-TODO:
+*/
 
 let cardsOpened = [];
 const allCards = document.querySelectorAll('.card');
@@ -73,7 +72,6 @@ const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
 
 
 function shuffleCards(){
-  console.log('C2S', cardsToShuffle);
   const shuffledCards = shuffle(cardsToShuffle);
   for (card of shuffledCards){
     deck.appendChild(card);
@@ -96,7 +94,6 @@ function toggleCard (card){
 //Push opened cards into the array
 function addCardsOpened(card){
   cardsOpened.push(card);
-  console.log(cardsOpened);
 }
 
 //Make cards turn around if no match
@@ -136,7 +133,6 @@ function cardLimit(card){
   cardsOpened.pop();
   !toggleCard(card);
   card.classList.remove('animated', 'fast', 'flipInY');
-  console.log(cardsOpened.length)
 }
 
 //Increment move counter
@@ -153,7 +149,7 @@ function starCount(){
     starCounter ++;
     starPanel[0].classList.add('hide');
     stars = 2;
-  } else if (movesCount === 14){
+  } else if (movesCount === 18){
     starCounter ++;
     starPanel[1].classList.add('hide');
     stars = 1;
@@ -165,10 +161,10 @@ function cancelButton(){
   const closeButton = document.querySelector('.cancel');
   const exitButton = document.querySelector('.close');
   closeButton.addEventListener('click', function(){
-    winnerPannel.classList.toggle('showPanel');
+    winnerPannel.classList.remove('showPanel');
   });
   exitButton.addEventListener('click', function(){
-    winnerPannel.classList.toggle('showPanel');
+    winnerPannel.classList.remove('showPanel');
   });
 }
 
@@ -176,7 +172,7 @@ function cancelButton(){
 function replayButton(){
   const replayButt = document.querySelector('.replay');
   replayButt.addEventListener('click', function(){
-    winnerPannel.classList.toggle('showPanel');
+    winnerPannel.classList.remove('showPanel');
     reset();
   });
 }
@@ -201,7 +197,7 @@ function gameFinished(){
   totalStars.innerHTML = stars;
   cancelButton();
   replayButton();
-  winnerPannel.classList.toggle('showPanel');
+  winnerPannel.classList.add('showPanel');
 }
 
 // Pop up when all matches are made
@@ -219,7 +215,6 @@ function winner(){
 function startClock(){
   clockID = setInterval(function() {
     time ++;
-    console.log(time);
     displayClock();
   }, 1000);
 }
@@ -248,6 +243,7 @@ function reset(){
   resetStars();
   resetMoves();
   resetCards();
+  matchCounter = 0;
   shuffleCards();
 }
 
@@ -260,8 +256,8 @@ function resetTime(){
 
 function resetStars(){
   const starPanel = document.querySelector('.stars').children;
-  starPanel[0].classList.toggle('hide');
-  starPanel[1].classList.toggle('hide');
+    starPanel[0].classList.remove('hide');
+    starPanel[1].classList.remove('hide');
 }
 
 function resetMoves(){
@@ -290,12 +286,9 @@ allCards.forEach(function(card){
       //Check for match here
       if (cardsOpened.length == 2) {
          if (cardsOpened[0].firstElementChild.className == cardsOpened[1].firstElementChild.className){
-           console.log("MATCH!!!");
-           
            match(card);
            movesConter();
            winner();
-//           console.log(cardsOpened.length);
         } else {
           setTimeout(function(){
           movesConter();
