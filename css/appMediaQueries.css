@@ -1,0 +1,37 @@
+@media screen and (max-width: 330px) {
+  .score-panel{
+    width: 80%;
+  }
+  .deck {
+    width: 80%;
+  }
+  
+  .deck .card{
+    width: 92px;
+    height: 92px;
+    margin-bottom: 10px;
+  }
+  
+  .winner-popup{
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 331px) and (max-width: 570px) {
+  .score-panel{
+    width: 80%;
+  }
+  .deck {
+    width: 80%;
+  }
+  
+  .deck .card{
+    width: 107px;
+    height: 107px;
+    margin-bottom: 20px;
+  }
+  
+  .winner-popup{
+    width: 90%;
+  }
+}

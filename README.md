@@ -3,18 +3,22 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Dependencies](#dependencies)
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Aim: Match all the cards to win
 
-To get started, open `js/app.js` and start building out the app's functionality
+Click on the cards to turn them around, and test your memory by matching all 8 pairs!
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+You start with three stars, but as you hit more than 10 moves, your star count goes down to two, and as you hit 18 moves your star count goes down to one.
 
-## Contributing
+Work your memory and try and beat your best time!
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+## Dependencies
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+The HTML and CSS base code was provided by Udacity.
+
+Helping me get started with my JavaScript code was Mike Wales [Youtube tutorial] (https://www.youtube.com/watch?v=_rUH-sEs68Y) and Matthre Cranford's [walkthrough blog] (https://matthewcranford.com/memory-game-walkthrough-part-1-setup/).
+
+The Animate Library was used to create interesting animation on the cards. (https://daneden.github.io/animate.css/)
