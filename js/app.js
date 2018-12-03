@@ -51,10 +51,7 @@ DONE:
 Useful sites that helped my to begin and when I was at a loss at what to do next:
 *   https://www.youtube.com/watch?v=_rUH-sEs68Y - Mike Wales
 *   https://matthewcranford.com/memory-game-walkthrough-part-1-setup/ - Matthew Cranford
-
-TODO:
-*   ReadME - customise with This is the starter code README file, it's only meant for developers who are starting to build out the game's functionality. Since you have built the app, your README file should be geared towards the end-user. Add instructions on how to run the project (and how to play the game if you want), list out any dependencies your project is using(if any) - 3rd party fonts, libraries, APIs. What browser is recommended for the project, stuff like this is in general!
-*   
+  
 */
 
 let cardsOpened = [];
