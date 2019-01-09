@@ -19,6 +19,6 @@ Work your memory and try and beat your best time!
 
 The HTML and CSS base code was provided by Udacity.
 
-Helping me get started with my JavaScript code was Mike Wales [Youtube tutorial] (https://www.youtube.com/watch?v=_rUH-sEs68Y) and Matthre Cranford's [walkthrough blog] (https://matthewcranford.com/memory-game-walkthrough-part-1-setup/).
+Helping me get started with my JavaScript code was Mike Wales [Youtube tutorial](https://www.youtube.com/watch?v=_rUH-sEs68Y) and Matthre Cranford's [walkthrough blog](https://matthewcranford.com/memory-game-walkthrough-part-1-setup/).
 
-The Animate Library was used to create interesting animation on the cards. (https://daneden.github.io/animate.css/)
+[The Animate Library](https://daneden.github.io/animate.css/) was used to bring movement to the cards.
